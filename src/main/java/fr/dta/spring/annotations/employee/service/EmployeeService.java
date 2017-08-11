@@ -2,7 +2,9 @@ package fr.dta.spring.annotations.employee.service;
 
 import java.util.List;
 
-import fr.dta.spring.xml.employee.model.Employee;
+import fr.dta.spring.annotations.employee.model.Employee;
+
+
 
 public interface EmployeeService {
 	void saveEmployee(Employee employee);

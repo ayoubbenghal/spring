@@ -9,15 +9,15 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<!--bean definition -->
 
 	<bean id="employeeRepository"
-		class="fr.dta.spring.employee.repository.EmployeeBeanRepository" />
+		class="fr.dta.spring.xml.employee.repository.EmployeeBeanRepository" />
 		
-	<bean id="employeeMockService" class="fr.dta.spring.employee.service.EmployeeMockService">
+	<bean id="employeeMockService" class="fr.dta.spring.xml.employee.service.EmployeeMockService">
 		<constructor-arg ref="employeeRepository" />
 	</bean> 
-	<bean id="companyService" class="fr.dta.spring.employee.service.CompanyService">
+	<bean id="companyService" class="fr.dta.spring.xml.employee.service.CompanyService">
 		<constructor-arg ref="employeeMockService" />
 	</bean>
 	
 	<bean id="employeeService"
-		class="fr.dta.spring.employee.service.EmployeeStubService" />
+		class="fr.dta.spring.xml.employee.service.EmployeeStubService" />
 </beans>

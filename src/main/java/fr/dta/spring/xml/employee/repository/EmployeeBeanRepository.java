@@ -3,13 +3,15 @@ package fr.dta.spring.xml.employee.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import fr.dta.spring.xml.employee.model.Employee;
 
 public class EmployeeBeanRepository implements EmployeeRepository{
 	
 	private List<Employee> listEmployees;
 	
-
+	
 	public EmployeeBeanRepository() {
 		
 		listEmployees=new ArrayList<>();

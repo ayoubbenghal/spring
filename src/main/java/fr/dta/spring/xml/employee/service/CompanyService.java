@@ -1,5 +1,6 @@
 package fr.dta.spring.xml.employee.service;
 
+
 public class CompanyService {
 	private EmployeeService employeeService;
 

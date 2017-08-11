@@ -15,12 +15,32 @@ public class Employee {
 	public Employee() {
 	
 	}
+	
+	public Employee(String idSecu) {
+		super();
+		this.idSecu = idSecu;
+	}
+
 	public Employee(Long id, String nom, String prenom) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
+	
+
+	public Employee(Long id, String idSecu) {
+		super();
+		this.id = id;
+		this.idSecu = idSecu;
+	}
+
+	public Employee(String nom, String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
 	public Long getId() {
 		return id;
 	}
