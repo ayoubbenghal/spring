@@ -2,8 +2,6 @@ package fr.dta.spring.xml.employee.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import fr.dta.spring.xml.employee.model.Employee;
 import fr.dta.spring.xml.employee.repository.EmployeeRepository;
 

@@ -10,12 +10,21 @@ public class Employee {
 	private String idSecu;
 	private BigDecimal salaire;
 	private LocalDate dateEmbauche;
+	private String userName;
 	
 	
 	public Employee() {
 	
 	}
 	
+	
+	public Employee(Long id, String userName) {
+		super();
+		this.id = id;
+		this.userName = userName;
+	}
+
+
 	public Employee(String idSecu) {
 		super();
 		this.idSecu = idSecu;
@@ -29,10 +38,11 @@ public class Employee {
 	}
 	
 
-	public Employee(Long id, String idSecu) {
+	public Employee(Long id,BigDecimal salaire, String idSecu) {
 		super();
 		this.id = id;
 		this.idSecu = idSecu;
+		this.salaire=salaire;
 	}
 
 	public Employee(String nom, String prenom) {
@@ -76,6 +86,14 @@ public class Employee {
 	}
 	public void setDateEmbauche(LocalDate dateEmbauche) {
 		this.dateEmbauche = dateEmbauche;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 

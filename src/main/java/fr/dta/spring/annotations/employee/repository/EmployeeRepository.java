@@ -15,4 +15,6 @@ public interface EmployeeRepository {
 
 	void updateEmployee(Employee employee);
 	void deleteAll();
+	void saveListEmployee(List<Employee> employeess);
+	void updateUserName(Employee employee);
 }

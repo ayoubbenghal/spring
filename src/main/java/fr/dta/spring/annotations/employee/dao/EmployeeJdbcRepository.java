@@ -21,7 +21,6 @@ public class EmployeeJdbcRepository extends AbstractJdbcRepository implements Em
 		
 		
 		
-		// TODO Auto-generated method stub
 		this.jdbcTemplate.update("insert into employee (firstname,lastname) values (?,?)",employee.getPrenom(),employee.getNom());
 	}
 
@@ -42,7 +41,7 @@ public class EmployeeJdbcRepository extends AbstractJdbcRepository implements Em
 
 	@Override
 	public void updateEmployee(Employee employee) {
-		this.jdbcTemplate.update("update employee set ssn=? where id=?",employee.getIdSecu(),employee.getId());
+		this.jdbcTemplate.update("update employee set ssn=?, salary=? where id=?",employee.getIdSecu(),employee.getSalaire(),employee.getId());
 		
 	}
 	public void deleteAll() {
@@ -59,6 +58,18 @@ public class EmployeeJdbcRepository extends AbstractJdbcRepository implements Em
 			return new Employee(rs.getLong("id"), rs.getString("lastname"), rs.getString("firstname"));
 		}
 	
+		
+	}
+
+	@Override
+	public void saveListEmployee(List<Employee> employees) {
+		employees.forEach(employee->saveEmployee(employee));
+		
+	}
+
+	@Override
+	public void updateUserName(Employee employee) {
+		this.jdbcTemplate.update("UPDATE employee SET username=? where id=?",employee.getUserName(),employee.getId());
 		
 	}
 	

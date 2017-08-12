@@ -54,4 +54,16 @@ public class EmployeeBeanRepository implements EmployeeRepository{
 		
 	}
 
+	@Override
+	public void saveListEmployee(List<Employee> employeess) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateUserName(Employee employee) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
