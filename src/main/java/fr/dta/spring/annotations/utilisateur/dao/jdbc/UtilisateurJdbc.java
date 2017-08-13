@@ -12,6 +12,24 @@ import fr.dta.spring.annotations.utilisateur.dao.repository.UtilisateurRepositor
 import fr.dta.spring.annotations.utilisateur.model.UserNotFoundException;
 import fr.dta.spring.annotations.utilisateur.model.Utilisateur;
 
+
+
+
+ 
+/**
+ * @author Ayoub Benghal
+ * 
+ * ayoub.benghal@gmail.com
+ *
+ *
+ * 2017
+ * 
+ * 
+ * Repository pour les requétes à la base de données
+ *
+ *
+ * UtilisateurJdbc.java
+ */
 @Repository
 //@Profile(value = { "USERJDBC" })
 
@@ -19,6 +37,17 @@ public class UtilisateurJdbc extends AbstractJdbcRepository implements Utilisate
 	
 	
 
+	/* (non-Javadoc)
+	 * @see fr.dta.spring.annotations.utilisateur.dao.repository.UtilisateurRepository#updateUserRole()
+	 */
+	
+	
+	/**
+	 * Cherche tous les employés qui ont un salaire superieure à 3000 et affecter le role de leur utilisateurs 
+	 * 
+	 * Le role est Cadre pour ses utilisateur
+	 * 
+	 */
 	@Override
 	public void updateUserRole() {
 		int count =this.jdbcTemplate.update("UPDATE utilisateur SET role= ? "
@@ -29,11 +58,17 @@ public class UtilisateurJdbc extends AbstractJdbcRepository implements Utilisate
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.dta.spring.annotations.utilisateur.dao.repository.UtilisateurRepository#add(fr.dta.spring.annotations.utilisateur.model.Utilisateur)
+	 */
 	@Override
 	public void add(Utilisateur user) {
 		this.jdbcTemplate.update("INSERT INTO utilisateur(username) values (?)",user.getUsername());
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.dta.spring.annotations.utilisateur.dao.repository.UtilisateurRepository#getListUser()
+	 */
 	@Override
 	public List<Utilisateur> getListUser() {
 		return this.jdbcTemplate.query("select * from utilisateur", new UtilisateurMapper());
@@ -41,6 +76,9 @@ public class UtilisateurJdbc extends AbstractJdbcRepository implements Utilisate
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.dta.spring.annotations.utilisateur.dao.repository.UtilisateurRepository#truncateUsers()
+	 */
 	@Override
 	public void truncateUsers() {
 		System.out.println("DELETE");
@@ -59,6 +97,9 @@ public class UtilisateurJdbc extends AbstractJdbcRepository implements Utilisate
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.dta.spring.annotations.utilisateur.dao.repository.UtilisateurRepository#addList(java.util.List)
+	 */
 	@Override
 	public void addList(List<Utilisateur> users) {
 		System.out.println("ADD");
@@ -66,6 +107,14 @@ public class UtilisateurJdbc extends AbstractJdbcRepository implements Utilisate
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see fr.dta.spring.annotations.utilisateur.dao.repository.UtilisateurRepository#updateUserRoleException()
+	 */
+	/**
+	 * Méthode pour faire un test de l'exception qui sera levée 
+	 * 
+	 * Aucun Employé n'a un salaire superieur à 6000
+	 */
 	@Override
 	public void updateUserRoleException() {
 

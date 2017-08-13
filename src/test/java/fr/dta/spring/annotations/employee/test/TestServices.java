@@ -2,7 +2,7 @@ package fr.dta.spring.annotations.employee.test;
 
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -12,23 +12,26 @@ import fr.dta.spring.annotations.employee.model.Employee;
 import fr.dta.spring.annotations.employee.service.EmployeeService;
 import fr.dta.spring.annotations.employee.service.MailService;
 
+/**
+ * @author Ayoub Benghal
+ * 
+ * ayoub.benghal@gmail.com
+ *
+ *
+ * 2017
+ */
 public class TestServices {
 	
-	AbstractApplicationContext context;
-	MailService mailServiceA;
-	MailService mailServiceB;
-	EmployeeService employeeService;
+	private static AbstractApplicationContext context;
+	private static MailService mailServiceA;
+	private static MailService mailServiceB;
+	private static EmployeeService employeeService;
 	
 	
 
-	@Before
+	@BeforeClass
 	public void before(){
-		
-		
-		
-		
 		context=new AnnotationConfigApplicationContext(App.class);
-		
 		mailServiceA= (MailService) context.getBean("mailService");
 		mailServiceA.setMessage("MESSAGE POUR SERVICE MAIL A");
 		mailServiceB=(MailService) context.getBean("mailService");

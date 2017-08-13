@@ -5,6 +5,20 @@ import org.springframework.stereotype.Service;
 
 import fr.dta.spring.annotations.employee.model.Employee;
 
+
+/**
+ * @author Ayoub Benghal
+ * 
+ * ayoub.benghal@gmail.com
+ *
+ *
+ * 2017
+ * 
+ * Scope Value Prototype -> Besoin de plusieurs instances de mail services
+ *
+ *
+ * MailService.java
+ */
 @Service
 @Scope(value = "prototype")
 public class MailService {

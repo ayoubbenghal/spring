@@ -1,50 +1,101 @@
 package fr.dta.spring.annotations.utilisateur.test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
 import fr.dta.spring.annotations.App;
 import fr.dta.spring.annotations.utilisateur.model.Utilisateur;
-import fr.dta.spring.annotations.utilisateur.service.UtilisateurJdbcService;
+import fr.dta.spring.annotations.utilisateur.service.UtilisateurService;
 
+
+
+/**
+ * @author Ayoub Benghal
+ * 
+ * ayoub.benghal@gmail.com
+ *
+ *
+ * 2017
+ *
+ *
+ * TestDeleteCreateReadUser.java
+ */
 public class TestDeleteCreateReadUser {
-	AbstractApplicationContext context;
-	UtilisateurJdbcService utilisateurJdbcService;
-	List<Utilisateur> users;
+	/**
+	 *TestDeleteCreateReadUser.java
+	 * context
+	 */
+	private static AbstractApplicationContext context;
+	/**
+	 *TestDeleteCreateReadUser.java
+	 * utilisateurService
+	 */
+	private static UtilisateurService utilisateurService;
+	/**
+	 *TestDeleteCreateReadUser.java
+	 * users
+	 */
+	private static List<Utilisateur> users;
 	
 	
-	@Before
-	public void before() {
+	/**
+	 * 
+	 * void
+	 * Initialisation avant lancement des tests
+	 *
+	 */
+	@BeforeClass
+	public static void before() {
 		
 		context=new AnnotationConfigApplicationContext(App.class);
-		utilisateurJdbcService=(UtilisateurJdbcService)context.getBean("utilisateurJdbcService");
+		utilisateurService=(UtilisateurService)context.getBean("utilisateurMockService");
 		users=new ArrayList<>();
 		users.add(new Utilisateur("ayoub"));
 		users.add(new Utilisateur("imen"));
 		users.add(new Utilisateur("rita"));
 
 	}
+	/**
+	 * 
+	 * void
+	 * Test la Suppression de tous les utilisateurs de la base de données
+	 *
+	 */
 	@Test
 	public void test0() {
-		utilisateurJdbcService.utilisateurRepository.truncateUsers();
+		utilisateurService.truncateUsers();
 	}
 	
+	/**
+	 * 
+	 * void
+	 * Test l'ajout d'une liste d'utilisateur dans la base de données
+	 *
+	 */
 	@Test
 	public void test1() {
 		
 		
-		utilisateurJdbcService.utilisateurRepository.addList(users);
+		utilisateurService.addList(users);
 		
 	}
+	/**
+	 * 
+	 * void
+	 * 
+	 * Teste qu'il y a bien 3 utilisateurs ajoutés à la base de données
+	 *
+	 */
 	@Test
 	public void test2() {
-		int usersDbSize=utilisateurJdbcService.utilisateurRepository.getListUser().size();
+		int usersDbSize=utilisateurService.getListUser().size();
 		int usersSize=users.size();
 		
 		assertTrue(usersDbSize==usersSize);

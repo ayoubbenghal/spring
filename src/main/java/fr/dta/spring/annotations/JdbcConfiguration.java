@@ -12,10 +12,29 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * @author Ayoub Benghal
+ * 
+ * ayoub.benghal@gmail.com
+ *
+ *
+ * 2017
+ *
+ * Conteneur de l'application qui sera liée à une base de donnés 
+ * Les transactions sont activées
+ * Les propriétes des ressources sont définies dans le fichier application.propeties
+ *
+ * JdbcConfiguration.java
+ */
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 public class JdbcConfiguration {
+	/**
+	 *JdbcConfiguration.java
+	 * environment
+	 * Injection du Bean Environment
+	 */
 	@Autowired
 	private Environment environment;
 
